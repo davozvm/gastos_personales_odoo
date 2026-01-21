@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<data>
-	</data>
+    <data>
+        <menuitem id="menu_gastos_root" name="Gastos Personales" sequence="10"/>
+
+        <record id="action_gastos" model="ir.actions.act_window">
+            <field name="name">Gastos</field>
+            <field name="res_model">gasto.personal</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Registra tu primer gasto
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_gastos" name="Gastos" parent="menu_gastos_root" action="action_gastos" sequence="10"/>
+    </data>
 </odoo>
