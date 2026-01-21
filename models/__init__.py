@@ -1,1 +1,1 @@
-from . import gasto
+from . import gastos

@@ -1,14 +1,14 @@
 from odoo import models, fields, api
 from datetime import date
 
-
 class GastoPersonal(models.Model):
     _name = 'gasto.personal'
     _description = 'Gasto Personal'
 
     name = fields.Char(string="Descripción", required=True)
     monto = fields.Float(string="Monto", required=True)
-    fecha = fields.Date(string="Fecha", default=date.today)
+    
+    fecha = fields.Date(string="Fecha", default=lambda self: date.today())
 
     categoria = fields.Selection([
         ('comida', 'Comida'),
@@ -21,7 +21,8 @@ class GastoPersonal(models.Model):
     estado = fields.Selection([
         ('draft', 'Borrador'),
         ('aprobado', 'Aprobado'),
-    ], default='draft')
+    ], string="Estado", default='draft', readonly=True)
 
     def action_aprobar(self):
-        self.estado = 'aprobado'
+        for record in self:
+            record.estado = 'aprobado'

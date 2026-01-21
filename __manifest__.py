@@ -6,8 +6,8 @@
     'depends': ['base'],
     'data': [
         'security/ir.model.access.csv',
+        'views/gastos_views.xml',
         'views/menus.xml',
-        'views/gasto_views.xml',
     ],
     'application': True,
 }
