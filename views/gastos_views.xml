@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_gasto_list" model="ir.ui.view">
+            <field name="name">gasto.personal.list</field>
+            <field name="model">gasto.personal</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="fecha"/>
+                    <field name="name"/>
+                    <field name="categoria"/>
+                    <field name="monto" sum="Total de Gastos"/> <field name="estado" widget="badge" decoration-info="estado == 'draft'" decoration-success="estado == 'aprobado'"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_gasto_form" model="ir.ui.view">
+            <field name="name">gasto.personal.form</field>
+            <field name="model">gasto.personal</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_aprobar"
+                                type="object"
+                                string="Aprobar"
+                                class="btn-primary"
+                                invisible="estado == 'aprobado'"/>
+                        <field name="estado" widget="statusbar" statusbar_visible="draft,aprobado"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="categoria"/>
+                            </group>
+                            <group>
+                                <field name="fecha"/>
+                                <field name="monto"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
